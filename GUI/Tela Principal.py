@@ -185,17 +185,20 @@ tasks = Listbox(borderwidth = 0, height = 14, width = 34)
 tasks.place(x = 490, y = 121)
 
 tasks_scroll = Scrollbar()
-tasks_scroll.place(x = 701, y = 160)
+tasks_scroll.place(x = 701, y = 200)
 
 tasks.configure(yscrollcommand = tasks_scroll.set)
 tasks_scroll.configure(command = tasks.yview)
 
 def onselect(evt):
-  widget = evt.widget
-  index = int(widget.curselection()[0])
-  value = widget.get(index)
-  inputTask.delete(0, END)
-  inputTask.insert(0, value.replace("✓", ""))
+	try:
+		widget = evt.widget
+		index = int(widget.curselection()[0])
+		value = widget.get(index)
+		inputTask.delete(0, END)
+		inputTask.insert(0, value.replace("✓", ""))
+	except:
+		pass
 
 def check(evt):
 	try:

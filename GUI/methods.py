@@ -15,9 +15,11 @@ def refresh(first, lista, items):
     aux.insert(lista.size() - 1, items[0])
 
 def add_item(lista, database, nome):
-  id = database.store(nome)
-  task = [id, nome]
-  refresh(False, lista, task)
+  nome = nome.strip()
+  if nome != "":
+    id = database.store(nome)
+    task = [id, nome]
+    refresh(False, lista, task)
 
 def search(database, nome, lista):
   items = database.findByName(nome)
