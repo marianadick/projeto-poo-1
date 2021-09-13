@@ -6,7 +6,8 @@
 
 from pathlib import Path
 from tkinter import *
-
+import database.main as database
+import methods
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -50,7 +51,7 @@ botão_deletar = Button(
     image=botão_deletar_imagem,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("botão del clicado"),
+    command=lambda: methods.delete(database, lista),
     relief="flat"
 )
 botão_deletar.place(
@@ -66,7 +67,7 @@ botão_adicionar = Button(
     image=botão_adicionar_imagem,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("botão add clicado"),
+    command=lambda: methods.add_item(lista, database, nome_da_tarefa.get()),
     relief="flat"
 )
 botão_adicionar.place(
@@ -82,7 +83,7 @@ botão_visualizar_tudo = Button(
     image=botão_visualizar_tudo_imagem,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("botão view all clicado"),
+    command=lambda: methods.refresh(True, lista, database.getAll()),
     relief="flat"
 )
 botão_visualizar_tudo.place(
@@ -98,7 +99,7 @@ botão_pesquisar = Button(
     image=botão_pesquisar_imagem,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("botão search clicado"),
+    command=lambda: methods.search(database, nome_da_tarefa.get(), lista),
     relief="flat"
 )
 botão_pesquisar.place(
@@ -114,7 +115,7 @@ botão_editar = Button(
     image=botão_editar_imagem,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("botão editar clicado"),
+    command=lambda: methods.edit(database, lista, nome_da_tarefa.get()),
     relief="flat"
 )
 botão_editar.place(
@@ -203,6 +204,8 @@ lista_scroll.place(x = 701, y = 160)
 
 lista.configure(yscrollcommand=lista_scroll.set)
 lista_scroll.configure(command=lista.yview)
+
+methods.refresh(True, lista, database.getAll())
 
 window.resizable(False, False)
 window.mainloop()
