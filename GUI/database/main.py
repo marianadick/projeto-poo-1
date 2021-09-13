@@ -5,7 +5,7 @@ from sqlite3.dbapi2 import connect
 # ele não exista, irá criar.
 database = sqlite3.connect('GUI/database/todo.db')
 
-def createTable():
+def createTables():
   # Cria a tabela
   database.execute("""
     CREATE TABLE IF NOT EXISTS list (
@@ -15,6 +15,16 @@ def createTable():
       completed INTEGER DEFAULT 0
     )
     """)
+  database.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name VARCHAR(50) NOT NULL
+    )
+    """)
+
+def storeUser(name):
+  database.execute("INSERT INTO users (name) VALUES (?)", (name, ))
+  database.commit()
 
 def store(name):
   # Criar uma tarefa

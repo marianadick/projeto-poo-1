@@ -16,6 +16,7 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+database.createTables()
 
 window = Tk()
 

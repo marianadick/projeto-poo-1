@@ -7,6 +7,7 @@
 
 from pathlib import Path
 from tkinter import *
+import methods
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -50,7 +51,7 @@ botão_iniciar = Button(
     image=botão_iniciar_imagem,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("botão iniciar clicado"),
+    command=lambda: methods.add_user(nome_do_usuário.get()),
     relief="flat"
 )
 botão_iniciar.place(

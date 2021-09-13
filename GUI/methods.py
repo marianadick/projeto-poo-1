@@ -1,3 +1,4 @@
+import database.main as database
 aux = []
 
 def refresh(first, lista, items):
@@ -34,3 +35,6 @@ def delete(database, lista):
   database.delete(id)
   lista.delete(0, lista.size())
   refresh(True, lista, database.getAll())
+
+def add_user(name):
+  database.storeUser(name)
