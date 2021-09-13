@@ -6,6 +6,7 @@ from sqlite3.dbapi2 import connect
 database = sqlite3.connect('GUI/database/todo.db')
 
 def createTable():
+  # Cria a tabela
   database.execute("""
     CREATE TABLE IF NOT EXISTS list (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,14 +16,17 @@ def createTable():
     )
     """)
 
-def store(name, desc):
+def store(name):
   # Criar uma tarefa
-  database.execute("INSERT INTO list (name, description) VALUES (?, ?)", (name, desc))
+  cursor = database.cursor()
+  cursor.execute("INSERT INTO list (name) VALUES (?)", (name, ))
   database.commit()
+  return cursor.lastrowid
 
 def findByName(name):
   # Buscar uma tarefa pelo nome
-  result = database.execute("SELECT * FROM list WHERE name LIKE ?", (name, ))
+  value = "%{}%".format(name)
+  result = database.execute("SELECT * FROM list WHERE name LIKE ?", (value, ))
   return result.fetchall()
 
 def findByPk(id):
@@ -50,7 +54,7 @@ def back(id):
   database.execute("UPDATE list SET completed = 0 WHERE id = ?", (id, ))
   database.commit()
 
-def update(id, name, desc):
+def update(id, name):
   # Atualiza uma tarefa
-  database.execute("UPDATE list SET name = ?, description = ? WHERE id = ?", (name, desc, id))
+  database.execute("UPDATE list SET name = ? WHERE id = ?", (name, id))
   database.commit()
