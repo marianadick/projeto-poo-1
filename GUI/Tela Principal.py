@@ -206,6 +206,15 @@ lista_scroll.place(x = 701, y = 160)
 lista.configure(yscrollcommand=lista_scroll.set)
 lista_scroll.configure(command=lista.yview)
 
+def onselect(evt):
+  widget = evt.widget
+  index = int(widget.curselection()[0])
+  value = widget.get(index)
+  nome_da_tarefa.delete(0, END)
+  nome_da_tarefa.insert(0, value)
+
+lista.bind('<<ListboxSelect>>', onselect)
+
 methods.refresh(True, lista, database.getAll())
 
 window.resizable(False, False)
