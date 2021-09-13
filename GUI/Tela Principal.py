@@ -45,177 +45,161 @@ canvas.create_rectangle(
     outline="")
 
 # Botões 
-
-botão_deletar_imagem = PhotoImage(
-    file=relative_to_assets("botão_deletar.png"))
-botão_deletar = Button(
-    image=botão_deletar_imagem,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: methods.delete(database, lista),
-    relief="flat"
-)
-botão_deletar.place(
-    x=297.0,
-    y=359.0,
-    width=100.0,
-    height=35.0
+deleteButtonImage = PhotoImage(file = relative_to_assets("botão_deletar.png"))
+deleteButton = Button(
+    image = deleteButtonImage,
+    borderwidth = 0,
+    highlightthickness = 0,
+    command = lambda: methods.delete(database, tasks),
+    relief = "flat"
+).place(
+    x = 297.0,
+    y = 359.0,
+    width = 100.0,
+    height = 35.0
 )
 
-botão_adicionar_imagem = PhotoImage(
-    file=relative_to_assets("botão_adicionar.png"))
-botão_adicionar = Button(
-    image=botão_adicionar_imagem,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: methods.add_item(lista, database, nome_da_tarefa.get()),
-    relief="flat"
-)
-botão_adicionar.place(
-    x=35.0,
-    y=359.0,
-    width=100.0,
-    height=35.0
+addButtonImg = PhotoImage(file = relative_to_assets("botão_adicionar.png"))
+addButton = Button(
+    image = addButtonImg,
+    borderwidth = 0,
+    highlightthickness = 0,
+    command = lambda: methods.add_item(tasks, database, inputTask.get()),
+    relief = "flat"
+).place(
+    x = 35.0,
+    y = 359.0,
+    width = 100.0,
+    height = 35.0
 )
 
-botão_visualizar_tudo_imagem = PhotoImage(
-    file=relative_to_assets("botão_view.png"))
-botão_visualizar_tudo = Button(
-    image=botão_visualizar_tudo_imagem,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: methods.refresh(True, lista, database.getAll()),
-    relief="flat"
-)
-botão_visualizar_tudo.place(
-    x=373.0,
-    y=308.0,
-    width=24.0,
-    height=24.0
+buttonViewAllImg = PhotoImage(file = relative_to_assets("botão_view.png"))
+buttonViewAll = Button(
+    image = buttonViewAllImg,
+    borderwidth = 0,
+    highlightthickness = 0,
+    command = lambda: methods.refresh(True, tasks, database.getAll()),
+    relief = "flat"
+).place(
+    x = 373.0,
+    y = 308.0,
+    width = 24.0,
+    height = 24.0
 )
 
-botão_pesquisar_imagem = PhotoImage(
-    file=relative_to_assets("botão_lupa.png"))
-botão_pesquisar = Button(
-    image=botão_pesquisar_imagem,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: methods.search(database, nome_da_tarefa.get(), lista),
-    relief="flat"
-)
-botão_pesquisar.place(
-    x=335.0,
-    y=311.0,
-    width=23.0,
-    height=23.0
+buttonSearchImg = PhotoImage(file = relative_to_assets("botão_lupa.png"))
+buttonSearch = Button(
+    image = buttonSearchImg,
+    borderwidth = 0,
+    highlightthickness = 0,
+    command = lambda: methods.search(database, inputTask.get(), tasks),
+    relief = "flat"
+).place(
+    x = 335.0,
+    y = 311.0,
+    width = 23.0,
+    height = 23.0
 )
 
-botão_editar_imagem = PhotoImage(
+buttonEditImg = PhotoImage(
     file=relative_to_assets("botão_editar.png"))
-botão_editar = Button(
-    image=botão_editar_imagem,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: methods.edit(database, lista, nome_da_tarefa.get()),
-    relief="flat"
-)
-botão_editar.place(
-    x=166.0,
-    y=359.0,
-    width=100.0,
-    height=35.0
+buttonEdit = Button(
+    image = buttonEditImg,
+    borderwidth = 0,
+    highlightthickness = 0,
+    command = lambda: methods.edit(database, tasks, inputTask.get()),
+    relief = "flat"
+).place(
+    x = 166.0,
+    y = 359.0,
+    width = 100.0,
+    height = 35.0
 )
 
 # Textos
-
 canvas.create_text(
     41.0,
     126.0,
-    anchor="nw",
-    text="Seja bem-vindo(a),\n",
-    fill="#5000B7",
-    font=("Roboto Bold", 26 * -1)
+    anchor = "nw",
+    text = "Seja bem-vindo(a),\n",
+    fill = "#5000B7",
+    font = ("Roboto Bold", 26 * -1)
 )
 
 canvas.create_text(
     41.0,
     156.0,
-    anchor="nw",
-    text="nome_do_usuário",
-    fill="#000B6D",
-    font=("Roboto Bold", 26 * -1)
+    anchor = "nw",
+    text = "nome_do_usuário",
+    fill = "#000B6D",
+    font = ("Roboto Bold", 26 * -1)
 )
 
 canvas.create_text(
     41.0,
     223.0,
-    anchor="nw",
-    text="Adicione novas tarefas ou edite a tarefa\nselecionada utilizando as ferramentas abaixo.",
-    fill="#5000B7",
-    font=("Roboto", 16 * -1)
+    anchor = "nw",
+    text = "Adicione novas tarefas ou edite a tarefa\nselecionada utilizando as ferramentas abaixo.",
+    fill = "#5000B7",
+    font = ("Roboto", 16 * -1)
 )
 
 canvas.create_text(
     41.0,
     285.0,
-    anchor="nw",
-    text="Nome da tarefa",
-    fill="#5000B7",
-    font=("Roboto Thin", 16 * -1)
+    anchor = "nw",
+    text = "Nome da tarefa",
+    fill = "#5000B7",
+    font = ("Roboto Thin", 16 * -1)
 )
 
 # Entradas de texto 
-
-nome_da_tarefa_image = PhotoImage(
-    file=relative_to_assets("entrada_2.png"))
-nome_da_tarefa_bg = canvas.create_image(
+inputImage = PhotoImage(file = relative_to_assets("entrada_2.png"))
+inputBackground = canvas.create_image(
     180.0,
     322.5,
-    image=nome_da_tarefa_image
+    image=inputImage
 )
-nome_da_tarefa = Entry(
-    bd=0,
-    bg="#D8E0F7",
-    highlightthickness=0
+inputTask = Entry(
+    bd = 0,
+    bg = "#D8E0F7",
+    highlightthickness = 0
 )
-nome_da_tarefa.place(
-    x=52.0,
-    y=305.0,
-    width=256.0,
-    height=33.0
+inputTask.place(
+    x = 52.0,
+    y = 305.0,
+    width = 256.0,
+    height = 33.0
 )
 
 # Imagens 
-
-ilustração = PhotoImage(
-    file=relative_to_assets("ilustração_2.png"))
+img01 = PhotoImage(file = relative_to_assets("ilustração_2.png"))
 image_1 = canvas.create_image(
     678.0,
     295.0,
-    image=ilustração
+    image = img01
 )
 
 # Listbox e scrollbar
+tasks = Listbox(borderwidth = 0, height = 14, width = 34)
+tasks.place(x = 490, y = 121)
 
-lista = Listbox(borderwidth = 0, height = 14, width = 34)
-lista.place(x = 490, y = 121)
+tasks_scroll = Scrollbar()
+tasks_scroll.place(x = 701, y = 160)
 
-lista_scroll= Scrollbar()
-lista_scroll.place(x = 701, y = 160)
-
-lista.configure(yscrollcommand=lista_scroll.set)
-lista_scroll.configure(command=lista.yview)
+tasks.configure(yscrollcommand = tasks_scroll.set)
+tasks_scroll.configure(command = tasks.yview)
 
 def onselect(evt):
   widget = evt.widget
   index = int(widget.curselection()[0])
   value = widget.get(index)
-  nome_da_tarefa.delete(0, END)
-  nome_da_tarefa.insert(0, value)
+  inputTask.delete(0, END)
+  inputTask.insert(0, value)
 
-lista.bind('<<ListboxSelect>>', onselect)
+tasks.bind('<<ListboxSelect>>', onselect)
 
-methods.refresh(True, lista, database.getAll())
+methods.refresh(True, tasks, database.getAll())
 
 window.resizable(False, False)
 window.mainloop()
