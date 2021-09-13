@@ -195,9 +195,24 @@ def onselect(evt):
   index = int(widget.curselection()[0])
   value = widget.get(index)
   inputTask.delete(0, END)
-  inputTask.insert(0, value)
+  inputTask.insert(0, value.replace("✓", ""))
+
+def check(evt):
+	try:
+		widget = evt.widget
+		index = int(widget.curselection()[0])
+		value = widget.get(index)
+		find = value.find("✓")
+		if find >= 0:
+			methods.back(tasks, index)
+		else:
+			methods.finish(tasks, index)
+	except:
+		pass
+	
 
 tasks.bind('<<ListboxSelect>>', onselect)
+tasks.bind('<Double-1>', check)
 
 methods.refresh(True, tasks, database.getAll())
 
