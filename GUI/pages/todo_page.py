@@ -7,10 +7,10 @@ class TodoPage(Frame):
   ASSETS_PATH = OUTPUT_PATH / Path("../assets")
 
   def __init__(self, window: Tk) -> None:
+    super().__init__(window)
     self.tasks_controller = TasksController()
     self.username_canvas = str
     self.input_task = Entry
-    super().__init__(window)
     self.canvas = Canvas(
       self,
       bg = "#D8E0F7",

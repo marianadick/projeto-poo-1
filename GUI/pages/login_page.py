@@ -7,10 +7,10 @@ class LoginPage(Frame):
   ASSETS_PATH = OUTPUT_PATH / Path("../assets")
 
   def __init__(self, window: Tk, todoPage: Frame) -> None:
+    super().__init__(window)
     self.username = Entry
     self.user_controller = UserController()
     self.todo_page = todoPage
-    super().__init__(window)
     self.canvas = Canvas(
       self,
       bg = "#D8E0F7",
