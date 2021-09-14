@@ -54,7 +54,7 @@ class TodoPage(Frame):
     )
   
   def create_buttons(self):
-    delete_image_btn = PhotoImage(file = self.relative_assets_path("botão_deletar.png"))
+    delete_image_btn = PhotoImage(file = self.relative_assets_path("delete_btn.png"))
     label = Label(image = delete_image_btn)
     label.image = delete_image_btn
     delete_btn = Button(
@@ -72,7 +72,7 @@ class TodoPage(Frame):
       height = 35.0
     )
 
-    add_image_btn = PhotoImage(file = self.relative_assets_path("botão_adicionar.png"))
+    add_image_btn = PhotoImage(file = self.relative_assets_path("add_btn.png"))
     label = Label(image = add_image_btn)
     label.image = add_image_btn
     add_btn = Button(
@@ -90,7 +90,7 @@ class TodoPage(Frame):
       height = 35.0
     )
 
-    view_all_image_btn = PhotoImage(file = self.relative_assets_path("botão_view.png"))
+    view_all_image_btn = PhotoImage(file = self.relative_assets_path("view_all_btn.png"))
     label = Label(image = view_all_image_btn)
     label.image = view_all_image_btn
     view_all_btn = Button(
@@ -108,7 +108,7 @@ class TodoPage(Frame):
       height = 24.0
     )
 
-    search_image_btn = PhotoImage(file = self.relative_assets_path("botão_lupa.png"))
+    search_image_btn = PhotoImage(file = self.relative_assets_path("search_btn.png"))
     label = Label(image = search_image_btn)
     label.image = search_image_btn
     search_btn = Button(
@@ -126,7 +126,7 @@ class TodoPage(Frame):
       height = 23.0
     )
 
-    edit_image_btn = PhotoImage(file = self.relative_assets_path("botão_editar.png"))
+    edit_image_btn = PhotoImage(file = self.relative_assets_path("edit_btn.png"))
     label = Label(image = edit_image_btn)
     label.image = edit_image_btn
     edit_btn = Button(
@@ -182,7 +182,7 @@ class TodoPage(Frame):
     )
 
   def create_inputs(self):
-    input_image = PhotoImage(file = self.relative_assets_path("entrada_2.png"))
+    input_image = PhotoImage(file = self.relative_assets_path("input.png"))
     label = Label(image = input_image)
     label.image = input_image
     input_background = self.canvas.create_image(
@@ -203,7 +203,7 @@ class TodoPage(Frame):
       height = 33.0
     )
 
-    background2 = PhotoImage(file = self.relative_assets_path("ilustração_2.png"))
+    background2 = PhotoImage(file = self.relative_assets_path("background_2.png"))
     label = Label(image=background2)
     label.image = background2
     self.canvas.create_image(

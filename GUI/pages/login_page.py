@@ -41,7 +41,7 @@ class LoginPage(Frame):
     )
   
   def create_buttons(self):
-    init_image_btn = PhotoImage(file = self.relative_assets_path("botão_iniciar.png"))
+    init_image_btn = PhotoImage(file = self.relative_assets_path("init_btn.png"))
     label = Label(image = init_image_btn)
     label.image = init_image_btn
     init_btn = Button(
@@ -88,7 +88,7 @@ class LoginPage(Frame):
     )
 
   def create_inputs(self):
-    username_image = PhotoImage(file = self.relative_assets_path("entrada_1.png"))
+    username_image = PhotoImage(file = self.relative_assets_path("username.png"))
     label = Label(image = username_image)
     label.image = username_image
     usernameBackground = self.canvas.create_image(
@@ -111,7 +111,7 @@ class LoginPage(Frame):
       height = 59.0
     )
 
-    background = PhotoImage(file = self.relative_assets_path("ilustração_1.png"))
+    background = PhotoImage(file = self.relative_assets_path("background.png"))
     label = Label(image=background)
     label.image = background
     self.canvas.create_image(
