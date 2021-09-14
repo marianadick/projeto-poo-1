@@ -47,7 +47,7 @@ class TodoPage(Frame):
     self.canvas.create_rectangle(
       1.1368683772161603e-13,
       7.105427357601002e-15,
-      862.0,
+      431.0,
       519.0,
       fill="#FCFCFC",
       outline=""
@@ -202,7 +202,7 @@ class TodoPage(Frame):
     self.inputTask = Entry(
       self,
       bd = 0,
-      bg = "#D8E0F7",
+      bg = "#E1E7F7",
       highlightthickness = 0
     )
     self.inputTask.place(

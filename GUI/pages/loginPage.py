@@ -100,7 +100,7 @@ class LoginPage(Frame):
     self.username = Entry(
       self,
       bd = 0,
-      bg = "#D8E0F7",
+      bg = "#E1E7F7",
       highlightthickness = 0
     )
 
