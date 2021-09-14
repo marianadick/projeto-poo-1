@@ -1,4 +1,4 @@
-from controllers.TasksController import TasksController
+from controllers.tasks_controller import TasksController
 from tkinter import *
 from pathlib import Path
 
@@ -7,9 +7,9 @@ class TodoPage(Frame):
   ASSETS_PATH = OUTPUT_PATH / Path("../assets")
 
   def __init__(self, window: Tk) -> None:
-    self.tasksController = TasksController()
-    self.usernameCanvas = str
-    self.inputTask = Entry
+    self.tasks_controller = TasksController()
+    self.username_canvas = str
+    self.input_task = Entry
     super().__init__(window)
     self.canvas = Canvas(
       self,
@@ -20,10 +20,10 @@ class TodoPage(Frame):
       highlightthickness = 0,
       relief = "ridge"
     )
-    self.createCanvas()
-    self.createButtons()
-    self.createTexts()
-    self.createInputs()
+    self.create_canvas()
+    self.create_buttons()
+    self.create_texts()
+    self.create_inputs()
 
 
     self.tasks = Listbox(self, borderwidth = 0, height = 14, width = 34)
@@ -36,12 +36,12 @@ class TodoPage(Frame):
     self.tasks.bind('<<ListboxSelect>>', self.onselect)
     self.tasks.bind('<Double-1>', self.check)
 
-    self.tasksController.refresh(True, self.tasks)
+    self.tasks_controller.refresh(True, self.tasks)
 
-  def relativeAssetsPath(self, path: str) -> Path:
+  def relative_assets_path(self, path: str) -> Path:
     return self.ASSETS_PATH / Path(path)
 
-  def createCanvas(self):
+  def create_canvas(self):
     self.canvas.place(x = 0, y = 0)
 
     self.canvas.create_rectangle(
@@ -53,98 +53,98 @@ class TodoPage(Frame):
       outline=""
     )
   
-  def createButtons(self):
-    deleteImageBtn = PhotoImage(file = self.relativeAssetsPath("botão_deletar.png"))
-    label = Label(image = deleteImageBtn)
-    label.image = deleteImageBtn
-    deleteBtn = Button(
+  def create_buttons(self):
+    delete_image_btn = PhotoImage(file = self.relative_assets_path("botão_deletar.png"))
+    label = Label(image = delete_image_btn)
+    label.image = delete_image_btn
+    delete_btn = Button(
       self,
-      image = deleteImageBtn,
+      image = delete_image_btn,
       borderwidth = 0,
       highlightthickness = 0,
-      command = lambda: self.tasksController.delete(self.tasks),
+      command = lambda: self.tasks_controller.delete(self.tasks),
       relief = "flat"
     )
-    deleteBtn.place(
+    delete_btn.place(
       x = 297.0,
       y = 359.0,
       width = 100.0,
       height = 35.0
     )
 
-    addImageBtn = PhotoImage(file = self.relativeAssetsPath("botão_adicionar.png"))
-    label = Label(image = addImageBtn)
-    label.image = addImageBtn
-    addBtn = Button(
+    add_image_btn = PhotoImage(file = self.relative_assets_path("botão_adicionar.png"))
+    label = Label(image = add_image_btn)
+    label.image = add_image_btn
+    add_btn = Button(
       self,
-      image = addImageBtn,
+      image = add_image_btn,
       borderwidth = 0,
       highlightthickness = 0,
-      command = lambda: self.tasksController.create(self.tasks, self.inputTask.get()),
+      command = lambda: self.tasks_controller.create(self.tasks, self.input_task.get()),
       relief = "flat"
     )
-    addBtn.place(
+    add_btn.place(
       x = 35.0,
       y = 359.0,
       width = 100.0,
       height = 35.0
     )
 
-    viewAllImageBtn = PhotoImage(file = self.relativeAssetsPath("botão_view.png"))
-    label = Label(image = viewAllImageBtn)
-    label.image = viewAllImageBtn
-    viewAllBtn = Button(
+    view_all_image_btn = PhotoImage(file = self.relative_assets_path("botão_view.png"))
+    label = Label(image = view_all_image_btn)
+    label.image = view_all_image_btn
+    view_all_btn = Button(
       self,
-      image = viewAllImageBtn,
+      image = view_all_image_btn,
       borderwidth = 0,
       highlightthickness = 0,
-      command = lambda: self.tasksController.refresh(True, self.tasks),
+      command = lambda: self.tasks_controller.refresh(True, self.tasks),
       relief = "flat"
     )
-    viewAllBtn.place(
+    view_all_btn.place(
       x = 373.0,
       y = 308.0,
       width = 24.0,
       height = 24.0
     )
 
-    seacrhImageBtn = PhotoImage(file = self.relativeAssetsPath("botão_lupa.png"))
-    label = Label(image = seacrhImageBtn)
-    label.image = seacrhImageBtn
-    searchBtn = Button(
+    search_image_btn = PhotoImage(file = self.relative_assets_path("botão_lupa.png"))
+    label = Label(image = search_image_btn)
+    label.image = search_image_btn
+    search_btn = Button(
       self,
-      image = seacrhImageBtn,
+      image = search_image_btn,
       borderwidth = 0,
       highlightthickness = 0,
-      command = lambda: self.tasksController.find(self.tasks, self.inputTask.get()),
+      command = lambda: self.tasks_controller.find(self.tasks, self.input_task.get()),
       relief = "flat"
     )
-    searchBtn.place(
+    search_btn.place(
       x = 335.0,
       y = 311.0,
       width = 23.0,
       height = 23.0
     )
 
-    editImageBtn = PhotoImage(file = self.relativeAssetsPath("botão_editar.png"))
-    label = Label(image = editImageBtn)
-    label.image = editImageBtn
-    editBtn = Button(
+    edit_image_btn = PhotoImage(file = self.relative_assets_path("botão_editar.png"))
+    label = Label(image = edit_image_btn)
+    label.image = edit_image_btn
+    edit_btn = Button(
       self,
-      image = editImageBtn,
+      image = edit_image_btn,
       borderwidth = 0,
       highlightthickness = 0,
-      command = lambda: self.tasksController.update(self.tasks, self.inputTask.get()),
+      command = lambda: self.tasks_controller.update(self.tasks, self.input_task.get()),
       relief = "flat"
     )
-    editBtn.place(
+    edit_btn.place(
       x = 166.0,
       y = 359.0,
       width = 100.0,
       height = 35.0
     )
 
-  def createTexts(self):
+  def create_texts(self):
     self.canvas.create_text(
       41.0,
       126.0,
@@ -154,7 +154,7 @@ class TodoPage(Frame):
       font = ("Roboto Bold", 26 * -1)
     )
 
-    self.usernameCanvas = self.canvas.create_text(
+    self.username_canvas = self.canvas.create_text(
       41.0,
       156.0,
       anchor = "nw",
@@ -181,38 +181,29 @@ class TodoPage(Frame):
       font = ("Roboto Thin", 16 * -1)
     )
 
-    self.canvas.create_text(
-      561.0,
-      182.0,
-      anchor="nw",
-      text="Insira seu nome/apelido",
-      fill="#5000B7",
-      font=("Roboto", 16 * -1)
-    )
-
-  def createInputs(self):
-    inputImage = PhotoImage(file = self.relativeAssetsPath("entrada_2.png"))
-    label = Label(image = inputImage)
-    label.image = inputImage
-    inputBackground = self.canvas.create_image(
+  def create_inputs(self):
+    input_image = PhotoImage(file = self.relative_assets_path("entrada_2.png"))
+    label = Label(image = input_image)
+    label.image = input_image
+    input_background = self.canvas.create_image(
       180.0,
       322.5,
-      image = inputImage
+      image = input_image
     )
-    self.inputTask = Entry(
+    self.input_task = Entry(
       self,
       bd = 0,
       bg = "#E1E7F7",
       highlightthickness = 0
     )
-    self.inputTask.place(
+    self.input_task.place(
       x = 52.0,
       y = 305.0,
       width = 256.0,
       height = 33.0
     )
 
-    background2 = PhotoImage(file = self.relativeAssetsPath("ilustração_2.png"))
+    background2 = PhotoImage(file = self.relative_assets_path("ilustração_2.png"))
     label = Label(image=background2)
     label.image = background2
     self.canvas.create_image(
@@ -226,8 +217,8 @@ class TodoPage(Frame):
       widget = evt.widget
       index = int(widget.curselection()[0])
       value = widget.get(index)
-      self.inputTask.delete(0, END)
-      self.inputTask.insert(0, value.replace("✓", ""))
+      self.input_task.delete(0, END)
+      self.input_task.insert(0, value.replace("✓", ""))
     except:
       pass
 
@@ -238,8 +229,8 @@ class TodoPage(Frame):
       value = widget.get(index)
       find = value.find("✓")
       if find >= 0:
-        self.tasksController.uncomplete(self.tasks, index)
+        self.tasks_controller.uncomplete(self.tasks, index)
       else:
-        self.tasksController.complete(self.tasks, index)
+        self.tasks_controller.complete(self.tasks, index)
     except:
       pass

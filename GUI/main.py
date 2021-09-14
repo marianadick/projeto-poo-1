@@ -1,13 +1,13 @@
 from tkinter import *
 
-from controllers.TasksController import TasksController
-from controllers.UserController import UserController
+from controllers.tasks_controller import TasksController
+from controllers.user_controller import UserController
 
-from pages.loginPage import LoginPage
-from pages.todoPage import TodoPage
+from pages.login_page import LoginPage
+from pages.todo_page import TodoPage
 
-tasksController = TasksController()
-userController = UserController()
+tasks_controller = TasksController()
+user_controller = UserController()
 
 window = Tk()
 
@@ -15,10 +15,10 @@ window.geometry("862x519")
 window.configure(bg = "#D8E0F7")
 window.title("To-do List")
 
-todoPage = TodoPage(window)
-loginPage = LoginPage(window, todoPage)
+todo_page = TodoPage(window)
+login_page = LoginPage(window, todo_page)
 
-loginPage.pack(fill = 'both', expand = 1)
+login_page.pack(fill = 'both', expand = 1)
 
 window.resizable(False, False)
 window.mainloop()
