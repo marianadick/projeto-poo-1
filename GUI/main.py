@@ -1,13 +1,7 @@
 from tkinter import *
 
-from controllers.tasks_controller import TasksController
-from controllers.user_controller import UserController
-
 from pages.login_page import LoginPage
 from pages.todo_page import TodoPage
-
-tasks_controller = TasksController()
-user_controller = UserController()
 
 window = Tk()
 
