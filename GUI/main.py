@@ -1,34 +1,24 @@
-import tkinter as tk
-import page2
-import page1
+from tkinter import *
 
-class Page(tk.Frame):
-  def __init__(self, *args, **kwargs):
-    tk.Frame.__init__(self, *args, **kwargs)
-  # def show(self):
-  #   self.lift()
+from controllers.tasks_controller import TasksController
+from controllers.user_controller import UserController
 
-class MainView(tk.Frame):
-  def __init__(self, *args, **kwargs):
-    tk.Frame.__init__(self, *args, **kwargs)
-    initial = page2.Page2(self)
-    todo = page1.Page1(self)
+from pages.login_page import LoginPage
+from pages.todo_page import TodoPage
 
-    buttonframe = tk.Frame(self)
-    container = tk.Frame(self)
-    buttonframe.pack(side="top", fill="x", expand=False)
-    container.pack(side="top", fill="both", expand=True)
+tasks_controller = TasksController()
+user_controller = UserController()
 
-    initial.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-    todo.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+window = Tk()
 
-    initial.tkraise()
+window.geometry("862x519")
+window.configure(bg = "#D8E0F7")
+window.title("To-do List")
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    main = MainView(root)
-    main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("862x519")
-    root.title("To-do List")
-    root.configure(bg = "#D8E0F7")
-    root.mainloop()
+todo_page = TodoPage(window)
+login_page = LoginPage(window, todo_page)
+
+login_page.pack(fill = 'both', expand = 1)
+
+window.resizable(False, False)
+window.mainloop()

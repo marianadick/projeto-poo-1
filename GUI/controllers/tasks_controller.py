@@ -9,7 +9,7 @@ class TasksController():
 		self.dao = Database("to-do.db")
 
 	def refresh(self, first: bool, lista: Listbox) -> None:
-		tasks = self.getAll()
+		tasks = self.get_all()
 		if first:
 			lista.delete(0, lista.size())
 			for item in tasks:
@@ -72,6 +72,6 @@ class TasksController():
 			lista.insert(task[0], task[1])
 			self.ids.insert(lista.size() - 1, task[0])
 
-	def getAll(self) -> list:
+	def get_all(self) -> list:
 		result = self.dao.database.execute("SELECT * FROM list")
 		return result

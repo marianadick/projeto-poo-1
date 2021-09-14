@@ -1,1 +1,1 @@
-python GUI/Teste.py
+python GUI/main.py
