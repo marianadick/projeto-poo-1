@@ -124,6 +124,6 @@ class LoginPage(Frame):
     nome = self.username.get()
     result = self.userController.create(nome)
     if result:
-      self.canvas.itemconfig(self.todoPage.usernameCanvas, text = self.userController.nome)
+      self.todoPage.canvas.itemconfig(self.todoPage.usernameCanvas, text = self.userController.nome)
       self.forget()
-      self.todoPage.pack(fill='both', expand=1)
+      self.todoPage.pack(fill = 'both', expand = 1)

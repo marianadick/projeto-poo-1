@@ -6,7 +6,6 @@ from controllers.UserController import UserController
 from pages.loginPage import LoginPage
 from pages.todoPage import TodoPage
 
-
 tasksController = TasksController()
 userController = UserController()
 
@@ -19,7 +18,7 @@ window.title("To-do List")
 todoPage = TodoPage(window)
 loginPage = LoginPage(window, todoPage)
 
-todoPage.pack(fill='both', expand=1)
+loginPage.pack(fill = 'both', expand = 1)
 
 window.resizable(False, False)
 window.mainloop()

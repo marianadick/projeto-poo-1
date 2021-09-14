@@ -33,8 +33,8 @@ class TodoPage(Frame):
     self.tasks.configure(yscrollcommand = tasks_scroll.set)
     tasks_scroll.configure(command = self.tasks.yview)
 
-    self.bind('<<ListboxSelect>>', self.onselect)
-    self.bind('<Double-1>', self.check)
+    self.tasks.bind('<<ListboxSelect>>', self.onselect)
+    self.tasks.bind('<Double-1>', self.check)
 
     self.tasksController.refresh(True, self.tasks)
 
@@ -45,8 +45,8 @@ class TodoPage(Frame):
     self.canvas.place(x = 0, y = 0)
 
     self.canvas.create_rectangle(
-      431.0,
-      0.0,
+      1.1368683772161603e-13,
+      7.105427357601002e-15,
       862.0,
       519.0,
       fill="#FCFCFC",
@@ -192,15 +192,9 @@ class TodoPage(Frame):
     )
 
   def createInputs(self):
-    usernameImage = PhotoImage(file = self.relativeAssetsPath("entrada_1.png"))
-    label = Label(image = usernameImage)
-    label.image = usernameImage
-    usernameBackground = self.canvas.create_image(
-      650.5,
-      248.5,
-      image = usernameImage
-    )
     inputImage = PhotoImage(file = self.relativeAssetsPath("entrada_2.png"))
+    label = Label(image = inputImage)
+    label.image = inputImage
     inputBackground = self.canvas.create_image(
       180.0,
       322.5,
