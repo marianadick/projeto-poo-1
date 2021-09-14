@@ -144,7 +144,6 @@ class TodoPage(Frame):
       height = 35.0
     )
 
-
   def createTexts(self):
     self.canvas.create_text(
       41.0,
