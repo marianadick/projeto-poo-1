@@ -2,8 +2,9 @@
 ## Todo List
 
 Para inicializar o projeto:  
-* No windows, execute o arquivo `start.bat`
-* Em sistemas Unix, execute o arquivo `start.sh`
+* No windows, execute o arquivo: `start.bat`
+* Em sistemas Unix, execute o arquivo: `start.sh`  
+* Ou execute o arquivo, na raiz do projeto: `./GUI/main.py`
 
 ## Relatório  
 
